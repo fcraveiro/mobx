@@ -1,0 +1,42 @@
+            ElevatedButton(
+              style: const ButtonStyle(),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const Pagina1(),
+                  ),
+                );
+              },
+              child: txtnu('Lista de Pacientes', 17, 4),
+            ),
+
+
+                              ElevatedButton.icon(
+                                label: Text(
+                                  'Favoritos',
+                                  style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontSize: 15,
+                                      color: corTextoElevated,
+                                      letterSpacing: .3),
+                                ),
+                                icon: FaIcon(
+                                  FontAwesomeIcons.solidHeart,
+                                  size: 16,
+                                  color: corTextoElevated,
+                                ),
+                                onPressed: () {
+                                  log('Favorito');
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  elevation: 3,
+                                  minimumSize: const Size(100, 35),
+                                  primary: corFundoElevated,
+                                  side: BorderSide(
+                                    width: 1,
+                                    color:
+                                        corBorderElevated, // Color(0xFFBDBDBD),
+                                  ),
+                                ),
+                              ),
+                              

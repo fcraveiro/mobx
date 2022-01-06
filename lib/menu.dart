@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobxa/paginas/pagina2.dart';
 import '/paginas/pagina1.dart';
 import 'widgets/widgets.dart';
 
@@ -33,6 +34,20 @@ class _MenuState extends State<Menu> {
                 );
               },
               child: txtnu('Lista de Pacientes', 17, 4),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              style: const ButtonStyle(),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const Testo(),
+                  ),
+                );
+              },
+              child: txtnu('Lista', 17, 4),
             ),
           ],
         ),
