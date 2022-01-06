@@ -30,16 +30,6 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
-
-  fonts:
-    - family: Nunito
-      fonts:
-        - asset: assets/fonts/Nunito-Regular.ttf
-
-    - family: RobotoSlab
-      fonts:
-        - asset: assets/fonts/RobotoSlab-Regular.ttf
-
-    - family: Licorice
-      fonts:
-        - asset: assets/fonts/Licorice-Regular.ttf
+  
+  assets:
+    - assets/imagens/

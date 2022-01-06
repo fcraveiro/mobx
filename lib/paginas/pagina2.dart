@@ -21,6 +21,12 @@ List lista = [
   'Porto Uniao',
   'Cidade De Videira',
   'Dionizio Markovicz',
+  'Prof. Hilda Hanke Goncalves',
+  'Cidade De Descanso',
+  'Cidade De Ilhota',
+  'Porto Uniao',
+  'Cidade De Videira',
+  'Dionizio Markovicz',
 ];
 
 int maior = 0;
@@ -37,12 +43,14 @@ class _TestoState extends State<Testo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFE0E0E0),
       appBar: const MyAppBar(),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const BlocoPesquisa(),
+            /*
             SizedBox(
               height: 30,
               child: Row(
@@ -59,19 +67,26 @@ class _TestoState extends State<Testo> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 30,
-              child: Row(
-                children: [
-                  Text('Menor = ${menor.toString()}'),
-                ],
-              ),
-            ),
+*/
+
             Expanded(
               child: ListView.builder(
                   itemCount: lista2.length,
                   itemBuilder: (__, index) {
-                    return Text(lista2[index].toString());
+                    return Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 65,
+                      color: Colors.white,
+//                      padding:
+//                          const EdgeInsets.only(bottom: 0, top: 0, left: 10),
+                      margin: const EdgeInsets.only(
+                          bottom: 0, left: 10, right: 10, top: 10),
+                      child: ListTile(
+                        visualDensity: VisualDensity.comfortable,
+                        title: Text(lista2[index].toString()),
+                        subtitle: const Text('(13) 920003427'),
+                      ),
+                    );
                   }),
             ),
           ],
@@ -154,7 +169,7 @@ class BlocoPesquisa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[200],
+      color: Colors.grey[400],
       padding: const EdgeInsets.fromLTRB(15, 15, 15, 15),
       child: Column(
         children: [
@@ -162,13 +177,14 @@ class BlocoPesquisa extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Chip(
-                backgroundColor: dgreen.withOpacity(.5),
+                backgroundColor: Colors.teal,
                 label: Text(
                   'Favoritos',
                   style: GoogleFonts.nunitoSans(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 14,
                     letterSpacing: .2,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 visualDensity: VisualDensity.compact,
@@ -182,13 +198,14 @@ class BlocoPesquisa extends StatelessWidget {
                 ),
               ),
               Chip(
-                backgroundColor: dgreen.withOpacity(.5),
+                backgroundColor: Colors.teal,
                 label: Text(
                   'Tratando',
                   style: GoogleFonts.nunitoSans(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 14,
                     letterSpacing: .2,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 visualDensity: VisualDensity.comfortable,
@@ -202,14 +219,14 @@ class BlocoPesquisa extends StatelessWidget {
                 ),
               ),
               Chip(
-                backgroundColor: dgreen.withOpacity(.5),
+                backgroundColor: Colors.teal,
                 label: Text(
                   'Remarcou',
                   style: GoogleFonts.nunitoSans(
-                    color: Colors.black,
-                    fontSize: 14,
-                    letterSpacing: .2,
-                  ),
+                      color: Colors.white,
+                      fontSize: 14,
+                      letterSpacing: .2,
+                      fontWeight: FontWeight.w600),
                 ),
                 visualDensity: VisualDensity.comfortable,
                 avatar: CircleAvatar(
@@ -265,8 +282,9 @@ class BlocoPesquisa extends StatelessWidget {
                 width: 15,
               ),
               Container(
-                width: 50,
-                height: 50,
+                width: 40,
+                height: 40,
+                margin: const EdgeInsets.only(right: 08),
                 decoration: const BoxDecoration(
                   boxShadow: [
                     BoxShadow(
@@ -281,9 +299,10 @@ class BlocoPesquisa extends StatelessWidget {
                 ),
                 child: ElevatedButton(
                   onPressed: () => {},
-                  child: const Icon(
-                    Icons.search,
-                    size: 26,
+                  child: const ImageIcon(
+                    AssetImage('assets/imagens/cancelar.png'),
+                    color: Colors.white,
+                    size: 17,
                   ),
                   style: ElevatedButton.styleFrom(
                     shape: const CircleBorder(),
