@@ -1,4 +1,6 @@
 //import 'dart:developer';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,13 +39,14 @@ class _TestoState extends State<Testo> {
   @override
   void initState() {
     separa();
+    coco();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFE0E0E0),
+      backgroundColor: const Color(0xFFEEEEEE),
       appBar: const MyAppBar(),
       body: SafeArea(
         child: Column(
@@ -73,18 +76,48 @@ class _TestoState extends State<Testo> {
               child: ListView.builder(
                   itemCount: lista2.length,
                   itemBuilder: (__, index) {
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 65,
-                      color: Colors.white,
-//                      padding:
-//                          const EdgeInsets.only(bottom: 0, top: 0, left: 10),
-                      margin: const EdgeInsets.only(
-                          bottom: 0, left: 10, right: 10, top: 10),
-                      child: ListTile(
-                        visualDensity: VisualDensity.comfortable,
-                        title: Text(lista2[index].toString()),
-                        subtitle: const Text('(13) 920003427'),
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            height: 65,
+//                            color: Colors.blue,
+//                          color: const Color(0xFFEEEEEE),
+                            child: ListTile(
+                              visualDensity: VisualDensity.comfortable,
+                              title: Text(
+                                lista2[index].toString(),
+                                style: GoogleFonts.nunitoSans(
+                                  fontSize: 18,
+                                  letterSpacing: .2,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              subtitle: Text(
+                                '(13) 920003427',
+                                style: GoogleFonts.nunitoSans(
+                                  fontSize: 15,
+                                  letterSpacing: .2,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 25),
+                            child: Divider(
+                              height: 2,
+                              color: Colors.grey[300],
+                              thickness: 2,
+                            ),
+                          )
+                        ],
                       ),
                     );
                   }),
@@ -126,39 +159,42 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: IconButton(
+      leading: const IconButton(
         icon: Icon(
           Icons.arrow_back,
-          color: Colors.grey[800],
+          color: Colors.white,
+//          color: Colors.grey[800],
           size: 20,
         ),
         onPressed: null,
       ),
       title: Text(
         'Clientes',
-        style: GoogleFonts.nunito(
-          color: Colors.black,
-          fontSize: 22,
-          fontWeight: FontWeight.w500,
+        style: GoogleFonts.montserrat(
+          color: Colors.white,
+          fontSize: 23,
+          fontWeight: FontWeight.w400,
+          letterSpacing: .3,
         ),
       ),
       actions: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            FaIcon(
+          children: const [
+            Icon(
               FontAwesomeIcons.bars,
               size: 20,
-              color: Colors.grey[600],
+              color: Colors.white,
+//              color: Colors.grey[600],
             ),
-            const SizedBox(
+            SizedBox(
               width: 15,
             ),
           ],
         ),
       ],
-      elevation: 2,
-      backgroundColor: Colors.white,
+      elevation: 0,
+      backgroundColor: Colors.teal[700],
       centerTitle: true,
     );
   }
@@ -169,72 +205,86 @@ class BlocoPesquisa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[400],
-      padding: const EdgeInsets.fromLTRB(15, 15, 15, 15),
+      color: Colors.teal[700],
+//      color: Colors.grey[400],
+      padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Chip(
-                backgroundColor: Colors.teal,
+                backgroundColor: Colors.white, // dgreen, // Colors.teal,
                 label: Text(
                   'Favoritos',
-                  style: GoogleFonts.nunitoSans(
-                    color: Colors.white,
-                    fontSize: 14,
-                    letterSpacing: .2,
+                  style: GoogleFonts.montserratAlternates(
+                    color: Colors.grey[600],
+                    //                    color: Colors.white,
+                    fontSize: 13,
+                    letterSpacing: .3,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 visualDensity: VisualDensity.compact,
+                padding: const EdgeInsets.all(5),
                 avatar: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: FaIcon(
+                  backgroundColor: dgreen,
+                  child: const FaIcon(
                     FontAwesomeIcons.solidHeart,
-                    size: 15,
-                    color: dgreen,
+                    size: 12,
+                    color: Colors.white, // dgreen,
+
+//                    color: dgreen,
                   ),
                 ),
               ),
               Chip(
-                backgroundColor: Colors.teal,
+                backgroundColor: Colors.white, // Colors.teal,
+                shadowColor: Colors.black,
+                padding: const EdgeInsets.all(5),
+
                 label: Text(
                   'Tratando',
-                  style: GoogleFonts.nunitoSans(
-                    color: Colors.white,
-                    fontSize: 14,
-                    letterSpacing: .2,
+                  style: GoogleFonts.montserratAlternates(
+                    color: Colors.grey[600],
+                    fontSize: 13,
+                    letterSpacing: .3,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                visualDensity: VisualDensity.comfortable,
-                avatar: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: FaIcon(
-                    FontAwesomeIcons.tooth,
-                    size: 15,
-                    color: dgreen,
+                visualDensity: VisualDensity.compact,
+                avatar: Padding(
+                  padding: const EdgeInsets.all(1.0),
+                  child: CircleAvatar(
+                    backgroundColor: dgreen,
+                    child: const FaIcon(FontAwesomeIcons.tooth,
+                        size: 12,
+                        color: Colors.white // Colors.grey[500], // dgreen,
+
+//                    color: dgreen,
+                        ),
                   ),
                 ),
               ),
               Chip(
-                backgroundColor: Colors.teal,
+                backgroundColor: Colors.white, // dgreen, // Colors.teal,
+                padding: const EdgeInsets.all(5),
+
                 label: Text(
                   'Remarcou',
-                  style: GoogleFonts.nunitoSans(
-                      color: Colors.white,
-                      fontSize: 14,
-                      letterSpacing: .2,
+                  style: GoogleFonts.montserratAlternates(
+                      color: Colors.grey[600],
+                      fontSize: 13,
+                      letterSpacing: .3,
                       fontWeight: FontWeight.w600),
                 ),
-                visualDensity: VisualDensity.comfortable,
+                visualDensity: VisualDensity.compact,
                 avatar: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: FaIcon(
+                  backgroundColor: dgreen, // Colors.white,
+                  child: const FaIcon(
                     FontAwesomeIcons.calendarAlt,
-                    size: 15,
-                    color: dgreen,
+                    size: 12,
+                    color: Colors.white, // dgreen,
                   ),
                 ),
               ),
@@ -248,15 +298,16 @@ class BlocoPesquisa extends StatelessWidget {
             children: [
               Expanded(
                 child: Container(
-                  height: 50,
+                  height: 40,
                   padding: const EdgeInsets.only(
                     left: 15,
                     right: 15,
+                    bottom: 15,
                   ),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(
-                      30,
+                      22,
                     ),
                     boxShadow: const [
                       BoxShadow(
@@ -267,6 +318,7 @@ class BlocoPesquisa extends StatelessWidget {
                     ],
                   ),
                   child: TextField(
+                    textAlignVertical: TextAlignVertical.top,
                     decoration: InputDecoration(
                       hintText: 'Nome',
                       hintStyle: TextStyle(
@@ -282,8 +334,8 @@ class BlocoPesquisa extends StatelessWidget {
                 width: 15,
               ),
               Container(
-                width: 40,
-                height: 40,
+                width: 35,
+                height: 35,
                 margin: const EdgeInsets.only(right: 08),
                 decoration: const BoxDecoration(
                   boxShadow: [
@@ -319,5 +371,26 @@ class BlocoPesquisa extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+random(min, max) {
+  var rn = Random();
+  return min + rn.nextInt(max - min);
+}
+
+coco() {
+  for (var i = 0; i < 10; i++) {
+    // ignore: avoid_print
+    var ff = '(13) 9' +
+        random(1000, 9999).toString() +
+        '-' +
+        random(1000, 9999).toString();
+    var gg =
+        '139' + random(1000, 9999).toString() + random(1000, 9999).toString();
+    // ignore: avoid_print
+    print(ff);
+    // ignore: avoid_print
+    print(gg);
   }
 }

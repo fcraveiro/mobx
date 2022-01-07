@@ -19,6 +19,10 @@ dependencies:
   google_fonts: ^2.2.0
   get: ^4.6.1
   get_storage: ^2.0.3
+  native_pdf_view: ^5.0.0
+  native_pdf_renderer: ^4.0.1
+  flutter_cached_pdfview: ^0.4.1
+  advance_pdf_viewer: ^2.0.1
   
 dev_dependencies:
 

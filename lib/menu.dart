@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mobxa/paginas/pagina2.dart';
-import '/paginas/pagina1.dart';
+import 'package:mobxa/paginas/pdf1.dart';
+import 'package:mobxa/paginas/pdf2.dart';
+import 'package:mobxa/paginas/pdf3.dart';
+import 'paginas/pagina1.dart';
+import 'paginas/pagina2.dart';
 import 'widgets/widgets.dart';
 
 class Menu extends StatefulWidget {
@@ -48,6 +51,48 @@ class _MenuState extends State<Menu> {
                 );
               },
               child: txtnu('Lista', 17, 4),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              style: const ButtonStyle(),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const Pdf1(),
+                  ),
+                );
+              },
+              child: txtnu('PDF 1', 17, 4),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              style: const ButtonStyle(),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const Pdf2(),
+                  ),
+                );
+              },
+              child: txtnu('PDF 2', 17, 4),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              style: const ButtonStyle(),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const Pdf3(),
+                  ),
+                );
+              },
+              child: txtnu('PDF 3', 17, 4),
             ),
           ],
         ),
